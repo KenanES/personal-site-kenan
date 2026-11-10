@@ -1,0 +1,95 @@
+:root {
+  --bg: #faf8f5;
+  --text: #1d1d1f;
+  --muted: #6b6b70;
+  --accent: #c0362c; /* a nod to International Orange */
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111113;
+    --text: #ececef;
+    --muted: #9a9aa2;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.site-header,
+main,
+.site-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.site-header { padding-top: 48px; padding-bottom: 24px; }
+.site-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.02em; }
+.tagline { margin: 4px 0 0; color: var(--muted); }
+
+/* Gallery: responsive grid, portrait photos side by side, the landscape one spans the row */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.photo { margin: 0; }
+.photo.wide { grid-column: 1 / -1; }
+
+.photo a { display: block; overflow: hidden; border-radius: var(--radius); }
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+/* Keep portrait thumbnails a uniform 3:4 so captions line up */
+.photo:not(.wide) img { aspect-ratio: 3 / 4; object-fit: cover; }
+.photo a:hover img,
+.photo a:focus-visible img { transform: scale(1.03); }
+.photo a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.photo figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+
+/* Lightbox */
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 95vw;
+  max-height: 95vh;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgba(0, 0, 0, 0.88); }
+.lightbox img {
+  display: block;
+  max-width: 95vw;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius);
+}
+.lightbox-caption { margin: 8px 0 0; color: #ddd; text-align: center; }
+.lightbox-close {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.site-footer { padding-top: 48px; padding-bottom: 32px; color: var(--muted); font-size: 0.85rem; }
