@@ -1,11 +1,11 @@
 /* Theme: follows the device setting unless the visitor picks one with the
    toggle, which sets data-theme="light" or "dark" on <html>. */
 :root {
-  --bg: #faf8f5;
-  --text: #1d1d1f;
-  --muted: #6b6b70;
-  --surface: rgba(255, 255, 255, 0.8);
-  --border: rgba(0, 0, 0, 0.12);
+  --bg: #f3e9d2;          /* parchment */
+  --text: #2b2118;        /* dark sepia ink */
+  --muted: #6e5d47;
+  --surface: rgba(248, 240, 222, 0.85);
+  --border: rgba(60, 40, 20, 0.2);
   --accent: #c0362c; /* a nod to International Orange */
   --radius: 6px;
   color-scheme: light;
@@ -13,22 +13,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111113;
-    --text: #ececef;
-    --muted: #9a9aa2;
-    --surface: rgba(30, 30, 34, 0.8);
-    --border: rgba(255, 255, 255, 0.16);
+    --bg: #1c1712;        /* warm dark brown */
+    --text: #ede3cf;      /* parchment-colored text */
+    --muted: #a8977d;
+    --surface: rgba(40, 33, 26, 0.85);
+    --border: rgba(237, 227, 207, 0.18);
     --accent: #ff6b5c;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #111113;
-  --text: #ececef;
-  --muted: #9a9aa2;
-  --surface: rgba(30, 30, 34, 0.8);
-  --border: rgba(255, 255, 255, 0.16);
+  --bg: #1c1712;        /* warm dark brown */
+  --text: #ede3cf;      /* parchment-colored text */
+  --muted: #a8977d;
+  --surface: rgba(40, 33, 26, 0.85);
+  --border: rgba(237, 227, 207, 0.18);
   --accent: #ff6b5c;
   color-scheme: dark;
 }
@@ -72,7 +72,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: "Times New Roman", Times, Georgia, serif;
   line-height: 1.5;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -86,8 +86,8 @@ main,
 }
 
 .site-header { padding-top: 48px; padding-bottom: 24px; }
-.site-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.02em; }
-.tagline { margin: 4px 0 0; color: var(--muted); }
+.site-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); letter-spacing: 0.01em; font-weight: 600; }
+.tagline { margin: 4px 0 0; color: var(--muted); font-size: 1.15rem; font-style: italic; }
 
 /* Gallery: responsive grid, portrait photos side by side, the landscape one spans the row */
 .gallery {
@@ -112,7 +112,7 @@ main,
 .photo a:focus-visible img { transform: scale(1.03); }
 .photo a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-.photo figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+.photo figcaption { margin-top: 8px; font-size: 1rem; font-style: italic; color: var(--muted); }
 
 /* Lightbox */
 .lightbox {
